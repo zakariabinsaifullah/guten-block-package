@@ -1,0 +1,1 @@
+{"version":3,"file":"front.css","sources":["webpack://guten-block-package/./src/blocks/first-block/front.scss"],"sourcesContent":[".wp-block-wgb-blocks-first-block {\r\n    background: #d6d6d6;\r\n    padding: 10px 20px;\r\n    text-align: center;\r\n    border: 2px solid #cc4010;\r\n}"],"mappings":"AAAA;AACA;AACA;AACA;AACA;;","sourceRoot":""}
