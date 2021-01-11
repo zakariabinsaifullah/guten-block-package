@@ -1,6 +1,6 @@
 {
   "name": "guten-block-package",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "Create Initial Package Setup for Gutenberg Blocks Development",
   "main": "index.js",
   "scripts": {
