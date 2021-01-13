@@ -14,6 +14,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/blocks/post-grid/front.js":
+/*!***************************************!*\
+  !*** ./src/blocks/post-grid/front.js ***!
+  \***************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _front_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./front.scss */ "./src/blocks/post-grid/front.scss");
+
+
+/***/ }),
+
 /***/ "./src/front.js":
 /*!**********************!*\
   !*** ./src/front.js ***!
@@ -22,7 +34,9 @@ __webpack_require__.r(__webpack_exports__);
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _blocks_first_block_front__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./blocks/first-block/front */ "./src/blocks/first-block/front.js");
+/* harmony import */ var _blocks_post_grid_front__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./blocks/post-grid/front */ "./src/blocks/post-grid/front.js");
 // Import add frontend js files for blocks
+
 
 
 /***/ }),
@@ -31,6 +45,18 @@ __webpack_require__.r(__webpack_exports__);
 /*!*******************************************!*\
   !*** ./src/blocks/first-block/front.scss ***!
   \*******************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./src/blocks/post-grid/front.scss":
+/*!*****************************************!*\
+  !*** ./src/blocks/post-grid/front.scss ***!
+  \*****************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);

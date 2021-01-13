@@ -64,9 +64,46 @@ function wgb_blocks_init(){
 
     // single block registration
     wgb_register_block('first-block');
+    wgb_register_block('post-grid', array(
+        'attributes' => array(
+            'numberOfPosts' => array(
+                'type' => 'number', 
+                'default' => 3
+            ), 
+            'postCategories' => array(
+                'type' => 'string'
+            )
+        ), 
+        'render_callback' => 'wgb_post_grid_callback'
+    ));
 
 }
 add_action( 'init', 'wgb_blocks_init' );
+
+/**
+ * Post Grid Callback 
+*/
+function wgb_post_grid_callback( $attributes ){
+    $args = array(
+        'post_type' => 'post', 
+        'posts_per_page' => $attributes['numberOfPosts']
+    );
+    $posts = '';
+    $posts = new WP_Query( $args );
+    $markup = '<div class="wgb_post_grid">';  
+    if( $posts->have_posts()){
+        while($posts->have_posts()){
+            $posts->the_post(); 
+            $markup .= '<h2>'.get_the_title().'</h2>';
+        }
+        wp_reset_query();
+    }else {
+        return __( 'No Posts', 'webackstop-guten-blocks' );
+    }
+    $markup .= '</div>'; 
+
+    return $markup;
+}
 
 /*
  * New Category
