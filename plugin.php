@@ -14,6 +14,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
+
 /*
 * Root Function for Blocks Registration
 * */
@@ -40,7 +41,7 @@ function wgb_blocks_init(){
     wp_register_script(
         'wgb-editor-script',
         plugins_url('dist/editor.js', __FILE__),
-        array('wp-blocks','wp-i18n', 'wp-element')
+        array('wp-blocks','wp-i18n', 'wp-element', 'wp-components', 'wp-blob', 'wp-data', 'wp-html-entities', 'lodash', 'wp-block-editor','wp-date')
     );
 
     // front script 
@@ -64,15 +65,36 @@ function wgb_blocks_init(){
 
     // single block registration
     wgb_register_block('first-block');
+    wgb_register_block('hero-section');
     wgb_register_block('post-grid', array(
         'attributes' => array(
             'numberOfPosts' => array(
                 'type' => 'number', 
-                'default' => 3
+                'default' => 1
             ), 
             'postCategories' => array(
                 'type' => 'string'
-            )
+            ), 
+            'featuredImage' => array(
+                'type' => 'boolean', 
+                'default' => true
+            ), 
+            'postTitle' => array(
+                'type' => 'boolean', 
+                'default' => true
+            ), 
+            'postCat' => array(
+                'type' => 'boolean', 
+                'default' => true
+            ), 
+            'postMeta' => array(
+                'type' => 'boolean', 
+                'default' => true
+            ), 
+            'postExcerpt' => array(
+                'type' => 'boolean', 
+                'default' => true
+            ) 
         ), 
         'render_callback' => 'wgb_post_grid_callback'
     ));
@@ -90,7 +112,7 @@ function wgb_post_grid_callback( $attributes ){
     );
     $posts = '';
     $posts = new WP_Query( $args );
-    $markup = '<div class="wgb_post_grid">';  
+    $markup = '<div class="wgb_post_grid_container">';  
     if( $posts->have_posts()){
         while($posts->have_posts()){
             $posts->the_post(); 

@@ -70,8 +70,16 @@ module.exports = (env, argv) => {
             ]
         },
         externals: {
+            lodash: "lodash",
             "@wordpress/blocks": ["wp", "blocks"], 
             "@wordpress/i18n": ["wp", "i18n"], 
+            "@wordpress/element": ["wp", "element"],
+            "@wordpress/data": ["wp", "data"],
+            "@wordpress/html-entities": ["wp", "htmlEntities"],
+            "@wordpress/components": ["wp", "components"],
+            "@wordpress/block-editor": ["wp", "blockEditor"],
+            "@wordpress/date": ["wp", "date"],
+            "@wordpress/autop": ["wp", "autop"],
         }
     }
     return config;

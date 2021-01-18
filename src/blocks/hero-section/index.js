@@ -3,14 +3,16 @@ import edit from './edit'
 import { registerBlockType } from '@wordpress/blocks'
 import { __ } from '@wordpress/i18n'
 
-registerBlockType('wgb-blocks/post-grid', {
-    title: __( 'Post Grid' ),
-    description: __( 'Display Post in grid view' ),
+registerBlockType('wgb-blocks/hero-section', {
+    title: __( 'Hero Section' ),
+    description: __( 'Hero Section for Landing Page' ),
     category: 'webackstop-blocks', // new category 
     icon: 'grid-view', // dashicon 
-    keywords: [ 'post grid view', 'post grid' ],
+    keywords: [ 'Hero Section', 'Hero Area' ],
     edit: edit,
     save: () => {
-        return null;
+        return(
+            <div>Save function</div>
+        )
     }
 })
