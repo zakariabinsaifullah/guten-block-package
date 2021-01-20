@@ -1,5 +1,5 @@
 {
-  "name": "@zakariabinsaifullah/start-guten-blocks",
+  "name": "start-guten-blocks",
   "version": "1.0.0",
   "description": "Create Initial Package Setup with two sample blocks for Gutenberg Blocks Development",
   "main": "index.js",
