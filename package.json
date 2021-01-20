@@ -1,7 +1,7 @@
 {
   "name": "start-guten-blocks",
   "version": "1.0.0",
-  "description": "Create Initial Package Setup for Gutenberg Blocks Development",
+  "description": "Create Initial Package Setup with two sample blocks for Gutenberg Blocks Development",
   "main": "index.js",
   "scripts": {
     "start": "webpack --mode=development --watch",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/zakariabinsaifullah/guten-block-package"
+    "url": "https://github.com/zakariabinsaifullah/start-guten-blocks"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/zakariabinsaifullah"
