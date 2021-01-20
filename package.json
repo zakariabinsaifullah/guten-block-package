@@ -7,7 +7,17 @@
     "start": "webpack --mode=development --watch",
     "build": "webpack --mode=production"
   },
-  "author": "Zakaria Binsaifullah",
+  "author": {
+    "name": "Zakaria Binsaifullah",
+    "email": "zbinsaifullah@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zakariabinsaifullah/guten-block-package"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/zakariabinsaifullah"
+  },
   "license": "ISC",
   "dependencies": {
     "@wordpress/autop": "^2.11.0",
