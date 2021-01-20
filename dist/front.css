@@ -1,9 +1,13 @@
-.wp-block-wgb-blocks-first-block {
-  background: #d6d6d6;
-  padding: 10px 20px;
-  text-align: center;
-  border: 2px solid #cc4010; }
+.wp-block-wgb-blocks-hero-section.main-banner {
+  max-width: 100% !important; }
 
+.wp-block-wgb-blocks-about-section.aboutUs {
+  max-width: 100% !important; }
+
+.wp-block-wgb-blocks-about-section .about-section-btn {
+  border-radius: 0 !important;
+  display: inline-block !important;
+  padding: 16px 0; }
 
 
 /*# sourceMappingURL=front.css.map*/

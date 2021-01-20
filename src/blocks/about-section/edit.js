@@ -1,12 +1,7 @@
-import { Component } from '@wordpress/element'
-import { withSelect } from "@wordpress/data"
-import { __ } from '@wordpress/i18n'
-import { decodeEntities } from '@wordpress/html-entities'
-import { removep } from '@wordpress/autop';
-import ReactHtmlParser from "react-html-parser";
-import { PanelColorSettings, InspectorControls, BlockControls, RichText, MediaPlaceholder, MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
-import { ColorPalette, PanelBody, ToggleControl, RangeControl, Toolbar, IconButton, __experimentalBoxControl as BoxControl } from '@wordpress/components';
-import { set } from 'lodash';
+import { BlockControls, InspectorControls, MediaPlaceholder, MediaUpload, MediaUploadCheck, RichText } from '@wordpress/block-editor';
+import { ColorPalette, IconButton, PanelBody, RangeControl, TextControl, ToggleControl, Toolbar, __experimentalBoxControl as BoxControl } from '@wordpress/components';
+import { Component } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
 
 const colors = [
     { 
@@ -34,7 +29,7 @@ const colors = [
 class HeroSection extends Component {
     render() {
         const { className, attributes, setAttributes } = this.props;
-        const { serviceTitle, serviceDesc, url, id, alt, sectionPadding, sectionBg, boxShadow, boxRightWidth, boxBottomWidth, borderColor, imagePosition } = attributes; 
+        const { serviceTitle, serviceDesc, url, id, alt, sectionPadding, boxShadow, boxRightWidth, boxBottomWidth, borderColor, imagePosition, btnLabel, btnLink, bntMinWidth } = attributes; 
         return (
             <div>
                 <InspectorControls>        
@@ -56,12 +51,25 @@ class HeroSection extends Component {
 
                             } ) } }
                         />
-                        <ColorPalette
-                            colors={ colors }
-                            onChange={ ( sectionBg ) => setAttributes( { sectionBg } ) }
-                            value={ sectionBg }
+                    </PanelBody>
+                    <PanelBody
+                        title={__("Button Settings")}
+                        initialOpen= { false }
+                    >
+                        <RangeControl
+                            label={ __( 'Min Width' ) }
+                            value={ bntMinWidth }
+                            onChange={ ( bntMinWidth ) => setAttributes( { bntMinWidth } ) }
+                            min={ 0 }
+                            max={ 500 }
+                        />
+                        <TextControl
+                            label={ __( "Link" ) }
+                            onChange={ ( btnLink ) => setAttributes( { btnLink } ) }
+                            value={ btnLink }
                         />
                     </PanelBody>
+
                     <PanelBody
                         title={__("Image Settings")}
                         initialOpen= { false }
@@ -146,19 +154,18 @@ class HeroSection extends Component {
                         </Toolbar>
                     }
                 </BlockControls>
-                <div className="main-banner" style={{
+                <div className="aboutUs" id="about" style={{
 					paddingTop: sectionPadding.top,
 					paddingBottom: sectionPadding.bottom,
 					paddingLeft: sectionPadding.left,
                     paddingRight: sectionPadding.right,
-                    backgroundColor: sectionBg
 				}}>
                     <div className="container">
                         <div className="row">
-                            <div className="col-md-6">
+                            <div className="col-md-6 m-auto">
                                 {
                                     imagePosition ? 
-                                    <div className="m-banner-img">
+                                    <div className="aboutImgdiv">
                                         {
                                             url ? (
                                                 <>
@@ -194,7 +201,7 @@ class HeroSection extends Component {
                                         }
                                     </div>
                                     :
-                                    <div className="m-banner-content">
+                                    <div className={className}>
                                         <RichText
                                             tagName="h1"
                                             className={ className }
@@ -207,13 +214,28 @@ class HeroSection extends Component {
                                             value={ serviceDesc }
                                             onChange={ ( serviceDesc ) => setAttributes( { serviceDesc } ) }
                                         />
+                                        <a 
+                                            href={ btnLink } 
+                                            rel="nofollow noopener" 
+                                            className={ `btn btn-warning d-block mt-3 text-white px-5 about-section-btn`}
+                                            style={{
+                                                minWidth: bntMinWidth
+                                            }}
+                                        >
+                                            <RichText
+                                                tagName="span"
+                                                // className={ `btn btn-warning d-block text-white mt-3 px-5 ${className}`}
+                                                value={ btnLabel }
+                                                onChange={ ( btnLabel ) => setAttributes( { btnLabel } ) }
+                                            />
+                                        </a>
                                     </div>
                                 }
                             </div>
-                            <div className="col-md-6">
+                            <div className="col-md-6 m-auto">
                                 {
                                     imagePosition ?
-                                    <div className="m-banner-content">
+                                    <div className={className}>
                                         <RichText
                                             tagName="h1"
                                             className={ className }
@@ -226,9 +248,24 @@ class HeroSection extends Component {
                                             value={ serviceDesc }
                                             onChange={ ( serviceDesc ) => setAttributes( { serviceDesc } ) }
                                         />
+                                        <a 
+                                            href={ btnLink } 
+                                            rel="nofollow noopener" 
+                                            className={ `btn btn-warning d-block mt-3 px-5 text-white about-section-btn`}
+                                            style={{
+                                                minWidth: bntMinWidth
+                                            }}
+                                        >
+                                            <RichText
+                                                tagName="span"
+                                                // className={ `btn btn-warning d-block text-white mt-3 px-5 ${className}`}
+                                                value={ btnLabel }
+                                                onChange={ ( btnLabel ) => setAttributes( { btnLabel } ) }
+                                            />
+                                        </a>
                                     </div>
                                     :
-                                    <div className="m-banner-img">
+                                    <div className="aboutImgdiv">
                                         {
                                             url ? (
                                                 <>

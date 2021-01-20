@@ -1,10 +1,10 @@
 <?php
 /**
- * Plugin Name: Webackstop Guten Blocks
- * Description: <strong><a href="https://webackstop.com">Webackstop Guten Blocks</a></strong> is an awesome package for start developing Gutenberg Blocks easily.
+ * Plugin Name: Custom Guten Blocks
+ * Description: <strong><a href="https://webackstop.com">Custom Guten Blocks</a></strong> is a Collection of Gutenberg Blocks.
  * Author: Zakaria Binsaifullah
  * Author URI: https://webackstop.com/
- * Text Domain: webackstop-guten-blocks
+ * Text Domain: custom-guten-blocks
  * Version: 1.0.0
  * License: GPL2+
  * License URI: https://www.gnu.org/licenses/gpl-2.0.txt
@@ -64,68 +64,19 @@ function wgb_blocks_init(){
     );
 
     // single block registration
-    wgb_register_block('first-block');
     wgb_register_block('hero-section');
-    wgb_register_block('post-grid', array(
-        'attributes' => array(
-            'numberOfPosts' => array(
-                'type' => 'number', 
-                'default' => 1
-            ), 
-            'postCategories' => array(
-                'type' => 'string'
-            ), 
-            'featuredImage' => array(
-                'type' => 'boolean', 
-                'default' => true
-            ), 
-            'postTitle' => array(
-                'type' => 'boolean', 
-                'default' => true
-            ), 
-            'postCat' => array(
-                'type' => 'boolean', 
-                'default' => true
-            ), 
-            'postMeta' => array(
-                'type' => 'boolean', 
-                'default' => true
-            ), 
-            'postExcerpt' => array(
-                'type' => 'boolean', 
-                'default' => true
-            ) 
-        ), 
-        'render_callback' => 'wgb_post_grid_callback'
-    ));
+    wgb_register_block('about-section');
 
 }
 add_action( 'init', 'wgb_blocks_init' );
 
 /**
- * Post Grid Callback 
+ * External Assets
 */
-function wgb_post_grid_callback( $attributes ){
-    $args = array(
-        'post_type' => 'post', 
-        'posts_per_page' => $attributes['numberOfPosts']
-    );
-    $posts = '';
-    $posts = new WP_Query( $args );
-    $markup = '<div class="wgb_post_grid_container">';  
-    if( $posts->have_posts()){
-        while($posts->have_posts()){
-            $posts->the_post(); 
-            $markup .= '<h2>'.get_the_title().'</h2>';
-        }
-        wp_reset_query();
-    }else {
-        return __( 'No Posts', 'webackstop-guten-blocks' );
-    }
-    $markup .= '</div>'; 
-
-    return $markup;
+function wgb_enqueue_blocks_assets(){
+    wp_enqueue_style( 'block-bootstrap', plugins_url( 'inc/css/bootstrap.min.css', __FILE__ ) );
 }
+add_action( 'enqueue_block_assets', 'wgb_enqueue_blocks_assets' );
 
 /*
  * New Category
@@ -136,11 +87,10 @@ function wgb_blocks_new_cat( $categories ){
 		$categories,
 		array(
 			array(
-				'title' => __( 'Webackstop Blocks', 'webackstop-guten-blocks' ),
+				'title' => __( 'Custom Blocks', 'custom-guten-blocks' ),
 				'slug'  => 'webackstop-blocks'
 			)
 		)
 	);
 }
 add_filter( 'block_categories', 'wgb_blocks_new_cat' );
-

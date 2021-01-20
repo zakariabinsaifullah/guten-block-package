@@ -1,0 +1,10 @@
+.wp-block-wgb-blocks-about-section{
+    &.aboutUs{
+        max-width: 100% !important;
+    }
+    .about-section-btn {
+        border-radius: 0 !important;
+        display: inline-block !important;
+        padding: 16px 0;
+    }
+}
